@@ -1,4 +1,5 @@
 
+import 'package:firebase_csplash_login/ui/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/round_button.dart';
@@ -79,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Enter Your Password",
-                            prefixIcon: Icon(Icons.password_outlined),
+                            prefixIcon: Icon(Icons.lock_open),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(11),
                             )
@@ -110,6 +111,19 @@ class _LoginScreenState extends State<LoginScreen> {
               }
             },
             ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Don't have an account? "),
+                TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                  SignUpScreen(),));
+                },
+                    child: Text("Sign Up"))
+
+              ],
+            )
           ],
         ),
       ),
