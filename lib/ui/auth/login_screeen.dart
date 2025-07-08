@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //Theme.of(context).colorScheme.primary,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: Text("Login", style: TextStyle(fontSize: 20,
+          title: Text("Login", style: TextStyle(fontSize: 22,
               color: Colors.white,fontWeight: FontWeight.bold),),
         ),
         body: Padding(
