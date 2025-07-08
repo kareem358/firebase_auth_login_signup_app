@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
             SizedBox(
-              height: 11,
+              height: 30,
             ),
             RoundButton(title: "Login",
             onTap: () {
