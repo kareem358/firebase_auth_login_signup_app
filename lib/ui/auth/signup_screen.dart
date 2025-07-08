@@ -1,5 +1,6 @@
 
 
+import 'package:firebase_csplash_login/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -10,6 +11,18 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  var emailController = TextEditingController();
+  var passwordController= TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +33,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+            labelText: "Email",
+                hintText: "Enter your email",
+                prefixIcon: Icon(Icons.email),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(11),
+                ),
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.surfaceVariant,
+              ),
+              validator: (value){
+                if (value!.isEmpty){
+                  return "enter your email";
+                }
+                return null;
+              },
+            ),
+          ),
+          SizedBox(height: 20,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: passwordController,
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Password",
+                hintText: "Enter your password",
+                prefixIcon: Icon(Icons.lock_open),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(11),
+                ),
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.surfaceVariant,
+              ),
+              validator: (value){
+                if (value!.isEmpty){
+                  return "enter your password";
+                }
+                return null;
+              },
+            ),
+          ),
+          SizedBox(height: 30,),
+          RoundButton(title: "Sign Up", onTap: (){}),
         ],
       ),
     );
