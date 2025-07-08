@@ -27,63 +27,85 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Sign Up"),
+        centerTitle: true,
 
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-            labelText: "Email",
-                hintText: "Enter your email",
-                prefixIcon: Icon(Icons.email),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(11),
+          Form(key: _formKey,
+              child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                    hintText: "Enter your email",
+                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                    filled: true,
+                    fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                  ),
+                  validator: (value){
+                    if (value!.isEmpty){
+                      return "enter your email";
+                    }
+                    return null;
+                  },
                 ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surfaceVariant,
               ),
-              validator: (value){
-                if (value!.isEmpty){
-                  return "enter your email";
-                }
-                return null;
-              },
-            ),
-          ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: passwordController,
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Password",
-                hintText: "Enter your password",
-                prefixIcon: Icon(Icons.lock_open),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(11),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    hintText: "Enter your password",
+                    prefixIcon: Icon(Icons.lock_open),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                    filled: true,
+                    fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                  ),
+                  validator: (value){
+                    if (value!.isEmpty){
+                      return "enter your password";
+                    }
+                    return null;
+                  },
                 ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surfaceVariant,
               ),
-              validator: (value){
-                if (value!.isEmpty){
-                  return "enter your password";
-                }
-                return null;
-              },
-            ),
-          ),
+
+            ],)),
+
           SizedBox(height: 30,),
-          RoundButton(title: "Sign Up", onTap: (){}),
+          RoundButton(title: "Sign Up", onTap: (){
+            if(_formKey.currentState!.validate()){
+
+            };
+          }),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Already have an account?"),
+              TextButton(onPressed: (){
+                Navigator.pop(context);
+              }, child: Text("Login"))
+            ],
+          )
         ],
+
       ),
     );
   }
