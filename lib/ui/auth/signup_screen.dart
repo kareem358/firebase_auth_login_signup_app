@@ -58,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderRadius: BorderRadius.circular(11),
                     ),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                   ),
                   validator: (value){
                     if (value!.isEmpty){
@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       borderRadius: BorderRadius.circular(11),
                     ),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                    fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                   ),
                   validator: (value){
                     if (value!.isEmpty){
@@ -97,17 +97,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],)),
 
           SizedBox(height: 30,),
-          RoundButton(title: "Sign Up", onTap: (){
+          RoundButton(title: "Sign Up", onTap: () async {
+            if (_formKey.currentState!.validate()) {
+              try {
+                await _auth.createUserWithEmailAndPassword(
+                  email: emailController.text.trim(),
+                  password: passwordController.text.trim(),
+                );
+                // You can navigate or show success toast here
+                Utils.toastMessage("User registered successfully");
+              } catch (error) {
+                Utils.toastMessage(error.toString());
+              }
+            }
+          },
+            /*onTap: (){
             if(_formKey.currentState!.validate()){
           _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
               password: passwordController.text.toString()).then((value){
                // Navigator.pop(context);
           }).onError((error, stackTrace){
            // print(error.toString());
-            Utils().toastMessage(error.toString());
+            Utils.toastMessage(error.toString());
           });
           }
-          }),
+          }*/
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
