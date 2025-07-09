@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(11),
                             ),
                             filled: true,
-                            fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                           ),
                         validator: (value){
                             if(value!.isEmpty){
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(11),
                               ),
                             filled: true,
-                            fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
                           ),
                           validator: (value){
                             if(value!.isEmpty){
