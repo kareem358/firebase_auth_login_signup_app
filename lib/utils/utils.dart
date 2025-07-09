@@ -5,7 +5,7 @@ class Utils {
   static void toastMessage(String message) {
     Fluttertoast.showToast(
       msg: message,
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.red.shade200,
       textColor: Colors.white,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
