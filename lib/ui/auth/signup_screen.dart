@@ -119,23 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             }
           },*/
             onTap: () async{
-            if(_formKey.currentState!.validate()){
-              setState(() {
-                loading = true;
-              });
-          await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
-              password: passwordController.text.toString()).then((value){
-                Utils.toastMessage("User registered successfully");
-                setState(() {
-                  loading = false;
-                });
-               // Navigator.pop(context);
-          }).onError((error, stackTrace){
-           // print(error.toString());
-            Utils.toastMessage(error.toString());
-            loading = false;
-          });
-          }
+           login();
           }
           ),
           Row(
@@ -151,5 +135,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       ),
     );
+  }
+
+  Future<void> login() async {
+    if(_formKey.currentState!.validate()){
+      setState(() {
+        loading = true;
+      });
+      await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
+          password: passwordController.text.toString()).then((value){
+        Utils.toastMessage("User registered successfully");
+        setState(() {
+          loading = false;
+        });
+        // Navigator.pop(context);
+      }).onError((error, stackTrace){
+        // print(error.toString());
+        Utils.toastMessage(error.toString());
+        setState(() {
+          loading = false;
+        });
+      });
+    }
   }
 }
