@@ -14,6 +14,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+  bool loading =false;
   var emailController = TextEditingController();
   var passwordController= TextEditingController();
 
@@ -97,8 +99,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],)),
 
           SizedBox(height: 30,),
-          RoundButton(title: "Sign Up", onTap: () async {
+          RoundButton(title: "Sign Up",
+            loading: loading,
+            /*onTap: () async {
             if (_formKey.currentState!.validate()) {
+              setState(() {
+                loading = true;
+              });
               try {
                 await _auth.createUserWithEmailAndPassword(
                   email: emailController.text.trim(),
@@ -110,18 +117,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Utils.toastMessage(error.toString());
               }
             }
-          },
-            /*onTap: (){
+          },*/
+            onTap: () async{
             if(_formKey.currentState!.validate()){
-          _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
+              setState(() {
+                loading = true;
+              });
+          await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
               password: passwordController.text.toString()).then((value){
+                Utils.toastMessage("User registered successfully");
+                setState(() {
+                  loading = false;
+                });
                // Navigator.pop(context);
           }).onError((error, stackTrace){
            // print(error.toString());
             Utils.toastMessage(error.toString());
+            loading = false;
           });
           }
-          }*/
+          }
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
