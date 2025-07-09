@@ -7,15 +7,17 @@ plugins {
 
 android {
     namespace = "com.kareemTech.firebase_csplash_login"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = flutter.compileSdkVersion.toInt()
     ndkVersion = "27.0.12077973"
 
     defaultConfig {
         applicationId = "com.kareemTech.firebase_csplash_login"
-        minSdk = minSdkVersion 23
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion.toInt()
+        versionCode = flutter.versionCode.toInt()
         versionName = flutter.versionName
+        multiDexEnabled = true
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
