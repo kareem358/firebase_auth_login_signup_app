@@ -1,5 +1,6 @@
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_csplash_login/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   var passwordController= TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -94,7 +97,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SizedBox(height: 30,),
           RoundButton(title: "Sign Up", onTap: (){
             if(_formKey.currentState!.validate()){
-
+          _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
+              password: passwordController.text.toString());
             };
           }),
           Row(
