@@ -98,8 +98,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
           RoundButton(title: "Sign Up", onTap: (){
             if(_formKey.currentState!.validate()){
           _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
-              password: passwordController.text.toString());
-            };
+              password: passwordController.text.toString()).then((value){
+               // Navigator.pop(context);
+          }).onError((error, stackTrace){
+            print(error.toString());
+          });
+          }
           }),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
