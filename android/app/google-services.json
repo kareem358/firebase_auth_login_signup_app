@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1068716825986",
+    "project_id": "fb-course-1dummy",
+    "storage_bucket": "fb-course-1dummy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068716825986:android:f26e0a9dbc1725463fc39b",
+        "android_client_info": {
+          "package_name": "com.kareemTech.firebase_csplash_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTOUEK8ICH86OV_IK2NuNGeVt_soU0NXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068716825986:android:f20e72b9f8ae56bb3fc39b",
+        "android_client_info": {
+          "package_name": "com.kareemTech.firebase_setup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTOUEK8ICH86OV_IK2NuNGeVt_soU0NXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
