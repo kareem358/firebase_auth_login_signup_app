@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_csplash_login/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/utils.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -101,7 +103,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               password: passwordController.text.toString()).then((value){
                // Navigator.pop(context);
           }).onError((error, stackTrace){
-            print(error.toString());
+           // print(error.toString());
+            Utils().toastMessage(error.toString());
           });
           }
           }),
