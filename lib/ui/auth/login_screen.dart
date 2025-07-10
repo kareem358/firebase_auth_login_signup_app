@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/round_button.dart';
+import '../posts/post_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,26 +27,49 @@ class _LoginScreenState extends State<LoginScreen> {
 // Add this helper method in your _LoginScreenState class
   String _getFriendlyError(FirebaseAuthException e) {
     switch (e.code) {
-      case 'user-not-found':
-        return 'No account found with this email';
-      case 'wrong-password':
-        return 'Incorrect password';
-      case 'invalid-email':
-        return 'Please enter a valid email address';
-      case 'user-disabled':
-        return 'This account has been disabled';
-      case 'too-many-requests':
-        return 'Too many attempts. Try again later';
-      case 'network-request-failed':
-        return 'Network error. Check your internet connection';
-      default:
-        return 'Login failed: ${e.message ?? 'Unknown error'}';
     }
   }
 
 // Updated login method
   void login() async {
     if (_formKey.currentState!.validate()) {
+      setState(() => loading = true);
+
+      try {
+        final userCredential = await _auth.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+
+        if (userCredential.user != null) {
+          Utils.showSuccessToast("Login successful!");
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => PostScreen()),
+          ).then((_) {
+            debugPrint("Navigation to PostScreen completed");
+          }).catchError((e) {
+            debugPrint("Navigation failed: $e");
+          });
+         /* Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => PostScreen()),
+          );*/
+        }
+      } on FirebaseAuthException catch (e) {
+        Utils.showErrorToast(_getFriendlyError(e));
+        debugPrint("Login error: ${e.toString()}");
+      } catch (e, stackTrace) {
+        Utils.showErrorToast("An unexpected error occurred");
+        debugPrint("Login error: $e\n$stackTrace");
+      } finally {
+        if (mounted) setState(() => loading = false);
+      }
+    }
+  }
+ /* void login() async {
+    if (_formKey.currentState!.validate())
+    {
       setState(() {
         loading = true; // Show loading indicator
       });
@@ -60,7 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
         if (userCredential.user != null) {
           Utils.showSuccessToast("Login successful!");
           // Navigate to home screen after successful login
-          //Navigator.pushReplacementNamed(context, '/home');
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => PostScreen(),));
         }
       } on FirebaseAuthException catch (e) {
         // Firebase-specific errors
@@ -68,14 +93,15 @@ class _LoginScreenState extends State<LoginScreen> {
       } catch (e) {
         // Generic errors
         Utils.showErrorToast("An unexpected error occurred");
-        debugPrint(e.toString()); // For developer debugging
+        debugPrint(e.toString());
+        // You can also log the error for developer debugging
       } finally {
         setState(() {
           loading = false; // Hide loading indicator
         });
       }
     }
-  }
+  }*/
 
   /*void login() async {
     if (_formKey.currentState!.validate()) {
@@ -102,9 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
-        SystemNavigator.pop();
-        return true;
+      onWillPop: () async {
+        // Allow back button if there's somewhere to go back to
+        if (Navigator.canPop(context)) {
+          return true;
+        }
+        // Otherwise prevent closing app from login screen
+        return false;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -187,6 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onTap: () {
                 if(_formKey.currentState!.validate()) {
                   login();
+                  loading = loading;
                  /* Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const HomeScreen()),
