@@ -27,6 +27,12 @@ class _LoginScreenState extends State<LoginScreen> {
 // Add this helper method in your _LoginScreenState class
   String _getFriendlyError(FirebaseAuthException e) {
     switch (e.code) {
+      case 'user-not-found': return 'No account found with this email';
+      case 'wrong-password': return 'Incorrect password';
+      case 'invalid-email': return 'Please enter a valid email';
+      case 'user-disabled': return 'This account has been disabled';
+      case 'too-many-requests': return 'Too many attempts. Try again later';
+      default: return 'Login failed: ${e.message}';
     }
   }
 
