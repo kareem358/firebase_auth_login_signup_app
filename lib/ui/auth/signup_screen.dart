@@ -21,6 +21,55 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String _getFriendlyError(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'weak-password':
+        return 'Your password is too weak (min 6 characters)';
+      case 'email-already-in-use':
+        return 'This email is already registered';
+      case 'invalid-email':
+        return 'Please enter a valid email address';
+      case 'operation-not-allowed':
+        return 'Email/password accounts are not enabled';
+      case 'network-request-failed':
+        return 'Network error. Check your internet connection';
+      default:
+        return 'Registration failed: ${e.message ?? 'Unknown error'}';
+    }
+  }
+
+  void signUp() async {
+
+    setState(() {
+      loading = true;
+    });
+
+    await _auth.createUserWithEmailAndPassword(
+        email: emailController.text.toString(),
+        password: passwordController.text.toString()
+    ).then((value) {
+      Utils.showCustomToast(
+        message: "Registration Successful! 🎉",
+        backgroundColor: Colors.green.shade600,
+        textColor: Colors.white,
+        duration: const Duration(seconds: 3),
+      );
+      setState(() {
+        loading = false;
+      });
+      // Navigator.pop(context);
+    }).onError((error, stackTrace) {
+      // print(error.toString());
+      if (error is FirebaseAuthException) {
+        Utils.toastMessage(_getFriendlyError(error));
+      } else {
+        Utils.toastMessage(error.toString());
+      }
+      setState(() {
+        loading = false;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -118,8 +167,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               }
             }
           },*/
-            onTap: () async{
-           login();
+            onTap: () {
+            if(_formKey.currentState!.validate()){
+              signUp();
+          }
           }
           ),
           Row(
@@ -135,27 +186,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       ),
     );
-  }
-
-  Future<void> login() async {
-    if(_formKey.currentState!.validate()){
-      setState(() {
-        loading = true;
-      });
-      await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
-          password: passwordController.text.toString()).then((value){
-        Utils.toastMessage("User registered successfully");
-        setState(() {
-          loading = false;
-        });
-        // Navigator.pop(context);
-      }).onError((error, stackTrace){
-        // print(error.toString());
-        Utils.toastMessage(error.toString());
-        setState(() {
-          loading = false;
-        });
-      });
-    }
   }
 }
