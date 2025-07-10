@@ -1,8 +1,10 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_csplash_login/ui/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../utils/utils.dart';
 import '../../widgets/round_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +18,79 @@ class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+  bool loading = false;
+  // Add this at the top of your _LoginScreenState class
+
+
+// Add this helper method in your _LoginScreenState class
+  String _getFriendlyError(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'user-not-found':
+        return 'No account found with this email';
+      case 'wrong-password':
+        return 'Incorrect password';
+      case 'invalid-email':
+        return 'Please enter a valid email address';
+      case 'user-disabled':
+        return 'This account has been disabled';
+      case 'too-many-requests':
+        return 'Too many attempts. Try again later';
+      case 'network-request-failed':
+        return 'Network error. Check your internet connection';
+      default:
+        return 'Login failed: ${e.message ?? 'Unknown error'}';
+    }
+  }
+
+// Updated login method
+  void login() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        loading = true; // Show loading indicator
+      });
+
+      try {
+        final userCredential = await _auth.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
+
+        // Success case
+        if (userCredential.user != null) {
+          Utils.showSuccessToast("Login successful!");
+          // Navigate to home screen after successful login
+          //Navigator.pushReplacementNamed(context, '/home');
+        }
+      } on FirebaseAuthException catch (e) {
+        // Firebase-specific errors
+        Utils.showErrorToast(_getFriendlyError(e));
+      } catch (e) {
+        // Generic errors
+        Utils.showErrorToast("An unexpected error occurred");
+        debugPrint(e.toString()); // For developer debugging
+      } finally {
+        setState(() {
+          loading = false; // Hide loading indicator
+        });
+      }
+    }
+  }
+
+  /*void login() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        loading=true;
+      });
+
+     await _auth.signInWithEmailAndPassword(email: emailController.text.trim(),
+          password: passwordController.text.trim()).then((value) {
+        Utils.toastMessage(value.user!.email.toString());
+      }).onError((error, stackTrace) {
+        Utils.toastMessage(error.toString());
+      });
+    }
+  }*/
 
   @override
   void dispose() {
@@ -111,7 +186,8 @@ class _LoginScreenState extends State<LoginScreen> {
               RoundButton(title: "Login",
               onTap: () {
                 if(_formKey.currentState!.validate()) {
-                  /*Navigator.pushReplacement(
+                  login();
+                 /* Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const HomeScreen()),
                   );*/
