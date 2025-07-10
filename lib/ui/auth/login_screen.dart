@@ -2,7 +2,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_csplash_login/ui/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../utils/utils.dart';
 import '../../widgets/round_button.dart';
