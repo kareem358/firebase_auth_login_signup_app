@@ -150,100 +150,109 @@ class _LoginScreenState extends State<LoginScreen> {
           title: Text("Login", style: TextStyle(fontSize: 22,
               color: Colors.white,fontWeight: FontWeight.bold),),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Form(key: _formKey,
-                  child:Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          // obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: "Email",
-                            //helperText: "Enter Your Email  e.g tech@gmail.com",
-                            hintText: "Enter your email",
-                            prefixIcon: Icon(Icons.email),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(11),
-                            ),
-                            filled: true,
-                            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-                          ),
-                        validator: (value){
-                            if(value!.isEmpty){
-                              return "enter your email";
-                            }
-                            return null;
-                        },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextFormField(
-                          controller: passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                            obscureText: true,
-                          decoration: InputDecoration(
-                              labelText: "Password",
-                              hintText: "Enter Your Password",
-                              prefixIcon: Icon(Icons.lock_open),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Form(key: _formKey,
+                    child:Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            // obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: "Email",
+                              //helperText: "Enter Your Email  e.g tech@gmail.com",
+                              hintText: "Enter your email",
+                              prefixIcon: Icon(Icons.email),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(11),
                               ),
-                            filled: true,
-                            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-                          ),
+                              filled: true,
+                              fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+                            ),
                           validator: (value){
-                            if(value!.isEmpty){
-                              return "enter your password";
-                            }
-                            return null;
+                              if(value!.isEmpty){
+                                return "enter your email";
+                              }
+                              return null;
                           },
+                          ),
                         ),
-                      ),
-                    ],
-                  ) ),
-
-
-              SizedBox(
-                height: 30,
-              ),
-              RoundButton(title: "Login",
-              onTap: () {
-                if(_formKey.currentState!.validate()) {
-                  login();
-                  loading = loading;
-                 /* Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  );*/
-                }
-              },
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don't have an account? "),
-                  TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    SignUpScreen(),));
-                  },
-                      child: Text("Sign Up"))
-
-                ],
-              )
-            ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                            decoration: InputDecoration(
+                                labelText: "Password",
+                                hintText: "Enter Your Password",
+                                prefixIcon: Icon(Icons.lock_open),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(11),
+                                ),
+                              filled: true,
+                              fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+                            ),
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "enter your password";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
+                    ) ),
+          
+          
+                SizedBox(
+                  height: 30,
+                ),
+                RoundButton(title: "Login",
+                onTap: () {
+                  if(_formKey.currentState!.validate()) {
+                    login();
+                    loading = loading;
+                   /* Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    );*/
+                  }
+                },
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account? "),
+                    TextButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                      SignUpScreen(),));
+                    },
+                        child: Text("Sign Up"))
+          
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  child:  Center(
+                    child: Text("Login with Phone Number"),
+                  ),
+                )
+               
+              ],
+            ),
           ),
         ),
       ),
