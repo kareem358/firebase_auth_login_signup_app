@@ -12,7 +12,8 @@ class _PostScreenState extends State<PostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title: Text("Post Screen"),
+        backgroundColor: Colors.deepPurple,
+        title: Text("Post Screen",style: TextStyle(fontSize: 22,)),
         centerTitle: true,
       ) ,
       body: Center(
