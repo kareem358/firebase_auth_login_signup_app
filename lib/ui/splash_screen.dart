@@ -22,10 +22,7 @@ SplashService splashService=SplashService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* appBar: AppBar(
-        title: const Text("FireBase Splash Screen"),
-        centerTitle: true,
-      ),*/
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
