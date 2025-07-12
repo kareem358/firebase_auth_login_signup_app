@@ -244,8 +244,15 @@ class _LoginScreenState extends State<LoginScreen> {
           
                   ],
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 30,),
                 Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    border: Border.all(
+                      color: Colors.black,
+                    )
+                  ),
                   child:  Center(
                     child: Text("Login with Phone Number"),
                   ),
