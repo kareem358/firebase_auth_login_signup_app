@@ -17,8 +17,8 @@ class _PostScreenState extends State<PostScreen> {
         centerTitle: true,
       ) ,
       body: Center(
-        child: Text("Post Screen"),
-      ),
+        child: Text("Post Screen",style: TextStyle(fontSize: 22),),
+      )
     );
   }
 }
