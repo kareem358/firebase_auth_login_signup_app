@@ -46,10 +46,10 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                     Utils.showErrorToast(e.message.toString());
                   },
 
-                  codeSent: (String verification, int ? token),
+                  codeSent: (String verification, int ? token){},
 
                   codeAutoRetrievalTimeout: (e){
-                  Utils.showErrorToast(e.message.toString());
+                  Utils.showErrorToast(e.toString());
                   }
 
               );
