@@ -13,10 +13,14 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Verify Code"),
+        backgroundColor: Colors.deepPurple,
+        title: Text("Verify Code", style: TextStyle(fontSize: 24),),
+        centerTitle: true,
       ),
       body:  Column(
         children: [
+          // we have to get details how to verify our code that will be sent automatically
+
         ],
       ),
     );
