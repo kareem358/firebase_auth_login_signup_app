@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_csplash_login/ui/auth/login__with_phone_number.dart';
 import 'package:firebase_csplash_login/ui/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -247,7 +248,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 30,),
                 InkWell(
                   onTap: (){
-
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithPhoneNumber(),));
                   },
                   child: Container(
                     height: 50,
