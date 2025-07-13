@@ -14,7 +14,8 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Verify Code", style: TextStyle(fontSize: 24),),
+        title: Text("Verify Code", style: TextStyle(fontSize: 24,
+            color: Colors.white,fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body:  Column(

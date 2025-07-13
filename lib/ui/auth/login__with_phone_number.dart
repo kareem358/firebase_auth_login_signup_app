@@ -21,7 +21,9 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Login",style: TextStyle(fontSize: 24),),
+        title: Text("Login",style: TextStyle(fontSize: 24,
+            color: Colors.white,fontWeight: FontWeight.bold),),
+        centerTitle: true,
       ),
       body:  Padding(
         padding:  EdgeInsets.symmetric(vertical: 24),
