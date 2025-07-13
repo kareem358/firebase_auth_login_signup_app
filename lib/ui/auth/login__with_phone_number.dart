@@ -7,6 +7,8 @@ class LoginWithPhoneNumber extends StatefulWidget {
 }
 
 class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
+
+  final phoneNumberController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +17,13 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
       ),
       body:  Column(
         children: [
+          SizedBox(height: 30,),
+          TextFormField(
+            controller: phoneNumberController,
+            decoration: InputDecoration(
+
+            ),
+          )
 ],
       ),
     );
