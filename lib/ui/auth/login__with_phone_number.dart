@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_csplash_login/ui/auth/verify_code.dart';
 import 'package:firebase_csplash_login/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,10 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                     Utils.showErrorToast(e.message.toString());
                   },
 
-                  codeSent: (String verification, int ? token){},
+                  codeSent: (String verificationId, int ? token){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => VerifyCodeScreen(),));
+                  },
 
                   codeAutoRetrievalTimeout: (e){
                   Utils.showErrorToast(e.toString());
