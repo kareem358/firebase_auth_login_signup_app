@@ -49,9 +49,9 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
 
                   codeSent: (String verificationId, int ? token){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => VerifyCodeScreen(),));
+                      MaterialPageRoute(builder: (context) => VerifyCodeScreen(verificationId: verificationId,),));
                   },
-
+// with one need to enable some setting form the firebase both for android and ios as well
                   codeAutoRetrievalTimeout: (e){
                   Utils.showErrorToast(e.toString());
                   }
