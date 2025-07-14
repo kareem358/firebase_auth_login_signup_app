@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/round_button.dart';
+import '../posts/post_screen.dart';
 
 class VerifyCodeScreen extends StatefulWidget {
  final String verificationId;
@@ -41,9 +42,32 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           ),
           SizedBox(height: 50,),
 
-          RoundButton(title: "Verify", loading: loading, onTap: (){
+          RoundButton(title: "Verify", loading: loading, onTap: () async{
+         final credential= PhoneAuthProvider.credential(
+             verificationId: widget.verificationId,
+             smsCode: codeController.text.trim()
+         );
+         try{
+           await auth.signInWithCredential(credential);
+           Navigator.pushReplacement(context,
+               MaterialPageRoute(builder: (context) => PostScreen(),));
+         }catch(e){
+       //    Utils.showErrorToast(e.toString());
+         }
 
-          }, )
+          /*  setState(() {
+              loading = true;
+            });
+            final credential = PhoneAuthProvider.credential(
+                verificationId: widget.verificationId,
+                smsCode: codeController.text.trim());
+            auth.signInWithCredential(credential).then((value) {
+              setState(() {
+                loading = false;
+              });
+            },);*/
+          }
+          ) ,
         ],
       ),
     );
