@@ -44,6 +44,11 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           SizedBox(height: 50,),
 
           RoundButton(title: "Verify", loading: loading, onTap: () async{
+            if (codeController.text.trim().length != 6) {
+              Utils.showErrorToast("Please enter the 6-digit code.");
+              return;
+            }
+
             setState(() {
               loading=true;
             });
