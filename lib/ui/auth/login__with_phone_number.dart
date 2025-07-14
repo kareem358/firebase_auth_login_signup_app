@@ -31,6 +31,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
           children: [
             SizedBox(height: 50,),
             TextFormField(
+              keyboardType: TextInputType.phone,
               controller: phoneNumberController,
               decoration: InputDecoration(
                 hintText: '+92 300 1234567',
@@ -42,21 +43,38 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
               ),
             ),
             SizedBox(height: 60,),
-            RoundButton(title: "login", onTap: (){
+            RoundButton(title: "login", loading: loading, onTap: (){
+              setState(() {
+                loading=true;
+              });
               auth.verifyPhoneNumber(
                 phoneNumber: phoneNumberController.text,
-                  verificationCompleted: (_){},
+                  verificationCompleted: (_){
+                    setState(() {
+                      loading=false;
+                    });
+                  },
                   verificationFailed: (e){
+                    setState(() {
+                      loading=false;
+                    });
                     Utils.showErrorToast(e.message.toString());
                   },
 
                   codeSent: (String verificationId, int ? token){
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => VerifyCodeScreen(verificationId: verificationId,),));
+                  setState(() {
+                    loading=false;
+                  });
                   },
 // with one need to enable some setting form the firebase both for android and ios as well
                   codeAutoRetrievalTimeout: (e){
                   Utils.showErrorToast(e.toString());
+                  setState(() {
+                    loading=false;
+                  });
                   }
 
               );
