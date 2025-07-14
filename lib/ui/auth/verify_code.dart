@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/round_button.dart';
@@ -12,6 +13,8 @@ class VerifyCodeScreen extends StatefulWidget {
 
 class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   final codeController=TextEditingController();
+  final auth=FirebaseAuth.instance;
+  bool loading =false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +41,9 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           ),
           SizedBox(height: 50,),
 
-          RoundButton(title: "Verify", onTap: (){}, )
+          RoundButton(title: "Verify", loading: loading, onTap: (){
+
+          }, )
         ],
       ),
     );
