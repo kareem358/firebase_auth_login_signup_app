@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/utils.dart';
 import '../../widgets/round_button.dart';
 import '../posts/post_screen.dart';
 
@@ -43,6 +44,9 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           SizedBox(height: 50,),
 
           RoundButton(title: "Verify", loading: loading, onTap: () async{
+            setState(() {
+              loading=true;
+            });
          final credential= PhoneAuthProvider.credential(
              verificationId: widget.verificationId,
              smsCode: codeController.text.trim()
@@ -52,7 +56,10 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
            Navigator.pushReplacement(context,
                MaterialPageRoute(builder: (context) => PostScreen(),));
          }catch(e){
-       //    Utils.showErrorToast(e.toString());
+           setState(() {
+             loading=false;
+           });
+          Utils.showErrorToast(e.toString());
          }
 
           /*  setState(() {
