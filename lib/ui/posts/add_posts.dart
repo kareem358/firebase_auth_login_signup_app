@@ -25,7 +25,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20, ),
         child: Column(
           children: [
             SizedBox(height: 30,),
@@ -39,14 +39,23 @@ class _AddPostScreenState extends State<AddPostScreen> {
               ),
             ),
             SizedBox(height: 30,),
-            RoundButton(title: 'Add', onTap: (){
+            RoundButton(title: 'Add', loading: loading, onTap: (){
+              setState(() {
+                loading=true;
+              });
               databaseRef.child('2').set({
                 'title': postController.text.toString(),
                // 'id':1,
 
               }).then((value) {
-
+                setState(() {
+                  loading=false;
+                });
+                Utils.showErrorToast('Post Added'.toString());
               }).onError((error, stackTrace) {
+                setState(() {
+                  loading=false;
+                });
                 Utils.showErrorToast(error.toString());
               });
 
