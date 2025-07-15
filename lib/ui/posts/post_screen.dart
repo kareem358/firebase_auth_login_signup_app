@@ -4,6 +4,7 @@ import 'package:firebase_csplash_login/ui/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/utils.dart';
+import 'add_posts.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});
@@ -54,7 +55,7 @@ class _PostScreenState extends State<PostScreen> {
         ],
       ) ,
       floatingActionButton: FloatingActionButton(onPressed: (){
-
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPostScreen()));
       },
       child: Icon(Icons.add, color: Colors.deepPurple,),),
       body: Center(
