@@ -54,10 +54,28 @@ class _PostScreenState extends State<PostScreen> {
 
         ],
       ) ,
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddPostScreen()));
-      },
-      child: Icon(Icons.add, color: Colors.deepPurple,),),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddPostScreen()),
+            );
+          },
+          label: Text(
+            "Add Post",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.0,
+            ),
+          ),
+          icon: Icon(Icons.add, color: Colors.white),
+          backgroundColor: Colors.deepPurple,
+          elevation: 6,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
       body: Center(
         child: Text("Post Screen",style: TextStyle(fontSize: 22),),
       )
