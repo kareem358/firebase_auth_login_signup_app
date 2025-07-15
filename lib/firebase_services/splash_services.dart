@@ -1,4 +1,38 @@
 
+import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+import '../ui/auth/login_screen.dart';
+import '../ui/posts/post_screen.dart';
+
+class SplashService {
+   void isLogin(BuildContext context) {
+      final user = FirebaseAuth.instance.currentUser;
+
+      Timer(const Duration(seconds: 2), () {
+         if (user != null) {
+            // User is already logged in
+            Navigator.pushReplacement(
+               context,
+               MaterialPageRoute(builder: (_) => const PostScreen()),
+            );
+         } else {
+            // No user is logged in
+            Navigator.pushReplacement(
+               context,
+               MaterialPageRoute(builder: (_) => const LoginScreen()),
+            );
+         }
+      });
+   }
+}
+
+
+
+
+/*
+
 
 import 'dart:async';
 
@@ -18,4 +52,4 @@ class SplashService{
          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
       });
    }
-}
+}*/
