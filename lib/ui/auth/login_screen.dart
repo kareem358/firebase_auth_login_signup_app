@@ -247,6 +247,47 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 30,),
                 InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => LoginWithPhoneNumber()),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    height: 50,
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.deepPurple, Colors.purpleAccent],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.deepPurple.withOpacity(0.3),
+                          blurRadius: 6,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Login with Phone Number",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.1,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                /*InkWell(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithPhoneNumber(),));
                   },
@@ -262,7 +303,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text("Login with Phone Number"),
                     ),
                   ),
-                )
+                )*/
                
               ],
             ),
