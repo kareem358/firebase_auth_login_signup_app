@@ -50,7 +50,7 @@ class _PostScreenState extends State<PostScreen> {
                 });*/
 
 
-        
+
         ],
       ) ,
       floatingActionButton: FloatingActionButton(onPressed: (){
