@@ -1,4 +1,5 @@
 import 'package:firebase_csplash_login/widgets/round_button.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -8,6 +9,9 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
+  final postController= TextEditingController();
+  bool loading=false;
+  final databaseRef=FirebaseDatabase.instance.ref('Post');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +37,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
             ),
             SizedBox(height: 30,),
             RoundButton(title: 'Add', onTap: (){
-// herer we have to perform special tast for addition of post of max 4 lines
+              databaseRef.child('1').set({
+                'id':1
+              });
+
+
             }),
             SizedBox(height: 30,),
           ],
