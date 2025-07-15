@@ -23,8 +23,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
           children: [
             SizedBox(height: 30,),
             TextFormField(
+              maxLines: 4,
               decoration: InputDecoration(
-                hintText: 'What is in your Mind?'
+                hintText: 'What is in your Mind?',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
             SizedBox(height: 30,),
