@@ -1,16 +1,31 @@
-# firebase_csplash_login
+FlashCard Quiz App 
+A clean and interactive Flutter app that lets users attempt a quiz based on flashcards. The questions are dynamically fetched from a remote JSON API using HTTP requests. Designed to practice and test general knowledge or subject-specific topics.
 
-A new Flutter project.
+Features
+-  Fetches quiz questions from a REST API (via `http` package)
+-  Multiple-choice questions with score tracking
+-  Final result screen with total score
+-  Simple and responsive UI using Material Design
+-  "Next Question" navigation and score state management using `setState()`
+-  Reusable custom widgets (`QuestionWidget`, `NextButton`, `ResultBox`)
 
-## Getting Started
+Packages Used
+| Package         | Purpose                                |
+|----------------|----------------------------------------|
+| `http`          | Fetching question data from the server |
+| `flutter/material.dart` | Core Flutter widgets for UI   |
 
-This project is a starting point for a Flutter application.
+Project Structure
+lib/
+├── model/ 
+│ ├── question_model.dart
+│ └── db_connect.dart # Handles API interaction
+├── widgets/
+│ ├── question_widget.dart
+│ ├── next_button.dart
+│ └── result_box.dart
+├── screens/
+│ └── home_screen.dart
+├── constants.dart
+└── main.dart
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
