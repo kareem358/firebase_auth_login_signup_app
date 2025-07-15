@@ -33,7 +33,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
             ),
             SizedBox(height: 30,),
             RoundButton(title: 'Add', onTap: (){
-
+// herer we have to perform special tast for addition of post of max 4 lines
             }),
             SizedBox(height: 30,),
           ],
