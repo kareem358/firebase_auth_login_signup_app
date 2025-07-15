@@ -38,17 +38,7 @@ class _PostScreenState extends State<PostScreen> {
                icon: Icon(Icons.logout, color: Colors.white,),
                ),
 
-                /*auth.signOut().then((value) {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  LoginScreen()),
-                        (route) => false, // Removes all previous routes
-                  );
-                }).catchError((e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Logout failed: ${e.toString()}')),
-                  );
-                });*/
+              
 
 
 
