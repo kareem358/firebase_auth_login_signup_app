@@ -38,7 +38,7 @@ class _PostScreenState extends State<PostScreen> {
                icon: Icon(Icons.logout, color: Colors.white,),
                ),
 
-              
+
 
 
 
