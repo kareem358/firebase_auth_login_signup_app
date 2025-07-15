@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_csplash_login/ui/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/utils.dart';
+
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});
 
@@ -17,26 +19,36 @@ class _PostScreenState extends State<PostScreen> {
     return Scaffold(
       appBar:AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Post Screen",style: TextStyle(fontSize: 22,)),
+        title: Text("Post Screen",style: TextStyle(
+          fontSize: 22,color: Colors.white,fontWeight: FontWeight.bold,)),
         centerTitle: true,
         actions: [
 
             IconButton(
-              icon: Icon(Icons.logout),
+
               onPressed: () {
-                auth.signOut().then((_) {
+                auth.signOut().then((value){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen(),));
+                }).onError((error,stackTrace){
+                  Utils.showErrorToast(error.toString());
+                });
+                },
+               icon: Icon(Icons.logout, color: Colors.white,),
+               ),
+
+                /*auth.signOut().then((value) {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    MaterialPageRoute(builder: (context) =>  LoginScreen()),
                         (route) => false, // Removes all previous routes
                   );
                 }).catchError((e) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Logout failed: ${e.toString()}')),
                   );
-                });
-              },
-            ),
+                });*/
+
 
          /* IconButton(onPressed: (){
             auth.signOut().then(value){
@@ -47,6 +59,10 @@ class _PostScreenState extends State<PostScreen> {
               icon: Icon(Icons.logout))*/
         ],
       ) ,
+      floatingActionButton: FloatingActionButton(onPressed: (){
+
+      },
+      child: Icon(Icons.add, color: Colors.deepPurple,),),
       body: Center(
         child: Text("Post Screen",style: TextStyle(fontSize: 22),),
       )
