@@ -57,10 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }).catchError((e) {
             debugPrint("Navigation failed: $e");
           });
-         /* Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => PostScreen()),
-          );*/
+
         }
       } on FirebaseAuthException catch (e) {
         Utils.showErrorToast(_getFriendlyError(e));
@@ -225,10 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   if(_formKey.currentState!.validate()) {
                     login();
                     loading = loading;
-                   /* Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
-                    );*/
+
                   }
                 },
                 ),
