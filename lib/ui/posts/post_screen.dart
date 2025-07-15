@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_csplash_login/ui/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -50,13 +50,7 @@ class _PostScreenState extends State<PostScreen> {
                 });*/
 
 
-         /* IconButton(onPressed: (){
-            auth.signOut().then(value){
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context) => LoginScreen(),));
-            }
-          },
-              icon: Icon(Icons.logout))*/
+        
         ],
       ) ,
       floatingActionButton: FloatingActionButton(onPressed: (){
