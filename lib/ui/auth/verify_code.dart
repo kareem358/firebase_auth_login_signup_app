@@ -67,17 +67,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           Utils.showErrorToast(e.toString());
          }
 
-          /*  setState(() {
-              loading = true;
-            });
-            final credential = PhoneAuthProvider.credential(
-                verificationId: widget.verificationId,
-                smsCode: codeController.text.trim());
-            auth.signInWithCredential(credential).then((value) {
-              setState(() {
-                loading = false;
-              });
-            },);*/
+
           }
           ) ,
         ],
