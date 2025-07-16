@@ -281,23 +281,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                /*InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithPhoneNumber(),));
-                  },
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                        color: Colors.black,
-                      )
-                    ),
-                    child:  Center(
-                      child: Text("Login with Phone Number"),
-                    ),
-                  ),
-                )*/
+
                
               ],
             ),
