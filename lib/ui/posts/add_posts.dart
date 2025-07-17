@@ -30,6 +30,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           children: [
             SizedBox(height: 30,),
             TextFormField(
+              controller: postController,
               maxLines: 4,
               decoration: InputDecoration(
                 hintText: 'What is in your Mind?',
@@ -43,15 +44,16 @@ class _AddPostScreenState extends State<AddPostScreen> {
               setState(() {
                 loading=true;
               });
-              databaseRef.child('2').set({
-                'title': postController.text.toString(),
-               // 'id':1,
+              databaseRef.child(DateTime.now().millisecondsSinceEpoch.toString()).set({
+                'title': postController.text,
+                'id': DateTime.now().millisecondsSinceEpoch.toString(),
+                // 'id':3,
 
               }).then((value) {
                 setState(() {
                   loading=false;
                 });
-                Utils.showErrorToast('Post Added'.toString());
+                Utils.showErrorToast('Post Successfully Added'.toString());
               }).onError((error, stackTrace) {
                 setState(() {
                   loading=false;
