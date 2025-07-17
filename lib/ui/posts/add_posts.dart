@@ -44,6 +44,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               setState(() {
                 loading=true;
               });
+              // we can add a subchild as well in the Post node.
               databaseRef.child(DateTime.now().millisecondsSinceEpoch.toString()).set({
                 'title': postController.text,
                 'id': DateTime.now().millisecondsSinceEpoch.toString(),
