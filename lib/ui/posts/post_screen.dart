@@ -71,14 +71,23 @@ class _PostScreenState extends State<PostScreen> {
               child: StreamBuilder(
                 stream: ref.onValue,
             builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
-              return ListView.builder(
-                  itemCount: snapshot.data!.snapshot.children.length,
-                  itemBuilder: (context, index) {
+                  if(!snapshot.hasData){
+                    return Text("No Data Found");
+                  }else{
+                    Map<dynamic,dynamic> map=snapshot.data!.snapshot.value as dynamic;
+                    List<dynamic> list=[];
+                    list.clear();
+                    list=map.values.toList();
+                    return ListView.builder(
+                        itemCount: snapshot.data!.snapshot.children.length,
+                        itemBuilder: (context, index) {
 
-               return ListTile(
-                 title: Text("This is streamBuilder"),
-               );
-              });
+                          return ListTile(
+                            title: Text("This is streamBuilder"),
+                          );
+                        });
+                  }
+
             }
 
           )),
