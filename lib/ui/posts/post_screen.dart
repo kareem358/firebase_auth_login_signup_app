@@ -70,7 +70,7 @@ class _PostScreenState extends State<PostScreen> {
           Expanded(
               child: StreamBuilder(
                 stream: ref.onValue,
-            builder: (context, snapshot) {
+            builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
               return ListView.builder(itemBuilder: (context, index) {
                return ListTile(
                  title: Text("This is streamBuilder"),
