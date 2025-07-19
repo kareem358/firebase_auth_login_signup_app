@@ -73,7 +73,9 @@ class _PostScreenState extends State<PostScreen> {
             builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
                   if(!snapshot.hasData){
                     return Text("No Data Found");
-                  }else{
+                  }else
+                    {
+
                     Map<dynamic,dynamic> map=snapshot.data!.snapshot.value as dynamic;
                     List<dynamic> list=[];
                     list.clear();
@@ -83,7 +85,7 @@ class _PostScreenState extends State<PostScreen> {
                         itemBuilder: (context, index) {
 
                           return ListTile(
-                            title: Text("This is streamBuilder"),
+                            title: Text(list[index]['title']),
                           );
                         });
                   }
