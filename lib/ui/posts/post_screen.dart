@@ -68,6 +68,18 @@ class _PostScreenState extends State<PostScreen> {
       body:Column(
         children: [
           Expanded(
+              child: StreamBuilder(
+                stream: ref.onValue,
+            builder: (context, snapshot) {
+              return ListView.builder(itemBuilder: (context, index) {
+               return ListTile(
+                 title: Text("This is streamBuilder"),
+               );
+              });
+            }
+
+          )),
+          Expanded(
             child: FirebaseAnimatedList(
 
                 query: ref,
