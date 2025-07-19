@@ -80,12 +80,19 @@ class _PostScreenState extends State<PostScreen> {
                     List<dynamic> list=[];
                     list.clear();
                     list=map.values.toList();
+
                     return ListView.builder(
                         itemCount: snapshot.data!.snapshot.children.length,
                         itemBuilder: (context, index) {
-
+                          var item = list[index] as Map?;
                           return ListTile(
-                            title: Text(list[index]['title']),
+
+                           /* title: Text(list[index]['title']),
+                            subtitle: Text(list[index]['id']),*/
+                               title: Text(item?['title']?.toString() ?? 'No Title'),
+                              subtitle: Text(item?['id']?.toString() ?? 'No ID'),
+
+
                           );
                         });
                   }
@@ -103,7 +110,9 @@ class _PostScreenState extends State<PostScreen> {
 
             
                   return ListTile(
-                    title: Text(snapshot.child('title').value.toString()),
+
+
+                       title: Text(snapshot.child('title').value.toString()),
                     subtitle: Text(snapshot.child('id').value.toString()),
                   );
                     }
