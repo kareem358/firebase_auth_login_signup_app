@@ -3,7 +3,7 @@ import 'package:firebase_csplash_login/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
-
+flutter pub 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());

@@ -87,7 +87,7 @@ class _PostScreenState extends State<PostScreen> {
                           var item = list[index] as Map?;
                           return ListTile(
 
-                           /* title: Text(list[index]['title']),
+                        /*    title: Text(list[index]['title']),
                             subtitle: Text(list[index]['id']),*/
                                title: Text(item?['title']?.toString() ?? 'No Title'),
                               subtitle: Text(item?['id']?.toString() ?? 'No ID'),
