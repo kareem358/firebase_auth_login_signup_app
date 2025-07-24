@@ -22,7 +22,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurple,
-        title: Text("Login",style: TextStyle(fontSize: 24,
+        title: Text("Login",style: TextStyle(fontSize: 26,
             color: Colors.white,fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
@@ -38,12 +38,12 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                 hintText: '+92 300 1234567',
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                 ),
 
               ),
             ),
-            SizedBox(height: 60,),
+            SizedBox(height: 50,),
             RoundButton(title: "login", loading: loading, onTap: (){
               setState(() {
                 loading=true;
