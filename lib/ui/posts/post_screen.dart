@@ -22,6 +22,7 @@ class _PostScreenState extends State<PostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurple,
         title: Text("Post Screen",style: TextStyle(
           fontSize: 22,color: Colors.white,fontWeight: FontWeight.bold,)),
@@ -66,8 +67,21 @@ class _PostScreenState extends State<PostScreen> {
           ),
         ),
       body:Column(
+
         children: [
-          // fetching firebase data using stream builder 
+          SizedBox(height: 10,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: TextFormField(
+              decoration: InputDecoration(
+                hintText: "search",
+                border: OutlineInputBorder(
+
+                )
+              ),
+            ),
+          ),
+          // fetching firebase data using stream builder
           /*Expanded(
               child: StreamBuilder(
                 stream: ref.onValue,
