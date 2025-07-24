@@ -30,7 +30,7 @@ SplashService splashService=SplashService();
             const Icon(Icons.flutter_dash, size: 100, color: Colors.blue),
             const SizedBox(height: 20),
             const Text(
-              "Welcome to Firebase Tutorial",
+              "Welcome to Firebase Configuration",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
