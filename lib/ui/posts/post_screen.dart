@@ -67,7 +67,8 @@ class _PostScreenState extends State<PostScreen> {
         ),
       body:Column(
         children: [
-          Expanded(
+          // fetching firebase data using stream builder 
+          /*Expanded(
               child: StreamBuilder(
                 stream: ref.onValue,
             builder: (context, AsyncSnapshot<DatabaseEvent> snapshot) {
@@ -87,8 +88,8 @@ class _PostScreenState extends State<PostScreen> {
                           var item = list[index] as Map?;
                           return ListTile(
 
-                        /*    title: Text(list[index]['title']),
-                            subtitle: Text(list[index]['id']),*/
+                        *//*    title: Text(list[index]['title']),
+                            subtitle: Text(list[index]['id']),*//*
                                title: Text(item?['title']?.toString() ?? 'No Title'),
                               subtitle: Text(item?['id']?.toString() ?? 'No ID'),
 
@@ -99,7 +100,7 @@ class _PostScreenState extends State<PostScreen> {
 
             }
 
-          )),
+          )),*/
           Expanded(
             child: FirebaseAnimatedList(
 
