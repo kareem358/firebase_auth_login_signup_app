@@ -18,6 +18,8 @@ class PostScreen extends StatefulWidget {
 class _PostScreenState extends State<PostScreen> {
   final auth =FirebaseAuth.instance;
   final ref=FirebaseDatabase.instance.ref('Post');
+  final searchFilter= TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,12 +75,18 @@ class _PostScreenState extends State<PostScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: TextFormField(
+              controller: searchFilter,
               decoration: InputDecoration(
                 hintText: "search",
                 border: OutlineInputBorder(
 
-                )
+                ),
               ),
+              onChanged: (String value){
+                setState(() {
+
+                });
+              },
             ),
           ),
           // fetching firebase data using stream builder
@@ -123,13 +131,24 @@ class _PostScreenState extends State<PostScreen> {
                 itemBuilder:
                     ( context,  snapshot,  animation, int index) {
 
+                  final title=snapshot.child('title').value.toString();
+                  if(searchFilter.text.isEmpty){
+                    return ListTile(
+                      title: Text(snapshot.child('title').value.toString()),
+                      subtitle: Text(snapshot.child('id').value.toString()),
+                    );
+                  }else if(title.toLowerCase().contains(searchFilter.text.toLowerCase())){
+
+                    return ListTile(
+                      title: Text(snapshot.child('title').value.toString()),
+                      subtitle: Text(snapshot.child('id').value.toString()),
+                    );
+
+                  } else {
+                    return Container();
+                  }
             
-                  return ListTile(
 
-
-                       title: Text(snapshot.child('title').value.toString()),
-                    subtitle: Text(snapshot.child('id').value.toString()),
-                  );
                     }
             
             ),
