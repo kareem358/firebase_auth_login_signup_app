@@ -70,56 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     }
   }
- /* void login() async {
-    if (_formKey.currentState!.validate())
-    {
-      setState(() {
-        loading = true; // Show loading indicator
-      });
 
-      try {
-        final userCredential = await _auth.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim(),
-        );
 
-        // Success case
-        if (userCredential.user != null) {
-          Utils.showSuccessToast("Login successful!");
-          // Navigate to home screen after successful login
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => PostScreen(),));
-        }
-      } on FirebaseAuthException catch (e) {
-        // Firebase-specific errors
-        Utils.showErrorToast(_getFriendlyError(e));
-      } catch (e) {
-        // Generic errors
-        Utils.showErrorToast("An unexpected error occurred");
-        debugPrint(e.toString());
-        // You can also log the error for developer debugging
-      } finally {
-        setState(() {
-          loading = false; // Hide loading indicator
-        });
-      }
-    }
-  }*/
 
-  /*void login() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        loading=true;
-      });
-
-     await _auth.signInWithEmailAndPassword(email: emailController.text.trim(),
-          password: passwordController.text.trim()).then((value) {
-        Utils.toastMessage(value.user!.email.toString());
-      }).onError((error, stackTrace) {
-        Utils.toastMessage(error.toString());
-      });
-    }
-  }*/
 
   @override
   void dispose() {
