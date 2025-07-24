@@ -20,6 +20,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.deepPurple,
         title: Text("Login",style: TextStyle(fontSize: 24,
             color: Colors.white,fontWeight: FontWeight.bold),),
