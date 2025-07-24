@@ -150,23 +150,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SizedBox(height: 30,),
           RoundButton(title: "Sign Up",
             loading: loading,
-            /*onTap: () async {
-            if (_formKey.currentState!.validate()) {
-              setState(() {
-                loading = true;
-              });
-              try {
-                await _auth.createUserWithEmailAndPassword(
-                  email: emailController.text.trim(),
-                  password: passwordController.text.trim(),
-                );
-                // You can navigate or show success toast here
-                Utils.toastMessage("User registered successfully");
-              } catch (error) {
-                Utils.toastMessage(error.toString());
-              }
-            }
-          },*/
             onTap: () {
             if(_formKey.currentState!.validate()){
               signUp();
