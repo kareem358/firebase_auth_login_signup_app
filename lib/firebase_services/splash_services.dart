@@ -12,7 +12,7 @@ class SplashService {
 
       Timer(const Duration(seconds: 2), () {
          if (user != null) {
-            // User is already logged in
+            // User is already logged in means having an account and logged in
             Navigator.pushReplacement(
                context,
                MaterialPageRoute(builder: (_) => const PostScreen()),
