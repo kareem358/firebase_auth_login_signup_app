@@ -136,6 +136,20 @@ class _PostScreenState extends State<PostScreen> {
                     return ListTile(
                       title: Text(snapshot.child('title').value.toString()),
                       subtitle: Text(snapshot.child('id').value.toString()),
+                      // list title always have to be a widget and trailing is optional
+                      trailing: PopupMenuButton(
+                        icon: Icon(Icons.more_vert),
+                        itemBuilder:(context)=>[
+                          PopupMenuItem(
+                            value: 1,
+                            child: Text("Edit"),
+                          ),
+                          PopupMenuItem(
+                            value: 2,
+                            child: Text("Delete"),
+                          )
+                        ]
+                      )
                     );
                   }else if(title.toLowerCase().contains(searchFilter.text.toLowerCase())){
 
