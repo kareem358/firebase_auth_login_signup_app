@@ -158,6 +158,10 @@ class _PostScreenState extends State<PostScreen> {
                             child: Tooltip(
                               message: 'Edit this item',
                               child: ListTile(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  showMyDialog();
+                                },
                                 leading: Icon(Icons.edit),
                                 title: Text('Edit'),
                               ),
@@ -186,6 +190,22 @@ class _PostScreenState extends State<PostScreen> {
 
         ],
       ),
+    );
+  }
+  Future <void> showMyDialog() async{
+
+    return showDialog(
+        context: context,
+      builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Update"),
+            content: Container(
+              child: TextField(),
+            ),
+          );
+      },
+
+
     );
   }
 }
