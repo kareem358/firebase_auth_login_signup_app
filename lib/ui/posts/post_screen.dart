@@ -142,12 +142,28 @@ class _PostScreenState extends State<PostScreen> {
                         itemBuilder:(context)=>[
                           PopupMenuItem(
                             value: 1,
-                            child: Text("Edit"),
-                          ),
+                            child: ListTile(
+                              leading: Icon(Icons.edit),
+                              title: Text("Edit"),
+                            )),
                           PopupMenuItem(
                             value: 2,
-                            child: Text("Delete"),
-                          )
+                            child: ListTile(
+                              leading: Icon(Icons.delete),
+                              title: Text("Delete"),
+                            ),
+                          ),
+                          PopupMenuItem<int>(
+                            value: 3,
+                            child: Tooltip(
+                              message: 'Edit this item',
+                              child: ListTile(
+                                leading: Icon(Icons.edit),
+                                title: Text('Edit'),
+                              ),
+                            ),
+                          ),
+
                         ]
                       )
                     );
