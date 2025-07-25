@@ -140,7 +140,7 @@ class _PostScreenState extends State<PostScreen> {
                       trailing: PopupMenuButton(
                         icon: Icon(Icons.more_vert),
                         itemBuilder:(context)=>[
-                     
+
                           PopupMenuItem(
                             value: 2,
                             child: ListTile(
@@ -187,7 +187,8 @@ class _PostScreenState extends State<PostScreen> {
       ),
     );
   }
-  Future <void> showMyDialog() async{
+  Future <void> showMyDialog(String title ) async{
+    editController.Text=title;
 
     return showDialog(
         context: context,
@@ -200,7 +201,6 @@ class _PostScreenState extends State<PostScreen> {
                 decoration: InputDecoration(
                   hintText: "Update your post",
                   border: OutlineInputBorder(
-
 
                   )
                 ),
