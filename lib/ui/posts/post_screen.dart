@@ -155,7 +155,7 @@ class _PostScreenState extends State<PostScreen> {
                               child: ListTile(
                                 onTap: () {
                                   Navigator.pop(context);
-                                  showMyDialog();
+                                  showMyDialog(title);
                                 },
                                 leading: Icon(Icons.edit),
                                 title: Text('Edit'),
@@ -187,8 +187,8 @@ class _PostScreenState extends State<PostScreen> {
       ),
     );
   }
-  Future <void> showMyDialog(String title ) async{
-    editController.Text=title;
+  Future <void> showMyDialog(String title, String id ) async{
+    editController.text=title;
 
     return showDialog(
         context: context,
@@ -211,6 +211,7 @@ class _PostScreenState extends State<PostScreen> {
                 Navigator.pop(context);
               }, child: Text("Cancel")),
               TextButton(onPressed: (){
+                ref.child(id);
                 Navigator.pop(context);
               }, child: Text("Update")),
             ],
