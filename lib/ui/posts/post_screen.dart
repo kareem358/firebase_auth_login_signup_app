@@ -155,7 +155,7 @@ class _PostScreenState extends State<PostScreen> {
                               child: ListTile(
                                 onTap: () {
                                   Navigator.pop(context);
-                                  showMyDialog(title);
+                                  showMyDialog(title, snapshot.child('id').value.toString());
                                 },
                                 leading: Icon(Icons.edit),
                                 title: Text('Edit'),
@@ -211,7 +211,13 @@ class _PostScreenState extends State<PostScreen> {
                 Navigator.pop(context);
               }, child: Text("Cancel")),
               TextButton(onPressed: (){
-                ref.child(id);
+                ref.child(id).update({
+                  'title': editController.text.toLowerCase(),
+                }).then((value) {
+                  Utils.showErrorToast("Updated Successfully");
+                }).onError((error, stackTrace) {
+                  Utils.showErrorToast(error.toString());
+                });
                 Navigator.pop(context);
               }, child: Text("Update")),
             ],
