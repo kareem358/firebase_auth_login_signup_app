@@ -140,12 +140,7 @@ class _PostScreenState extends State<PostScreen> {
                       trailing: PopupMenuButton(
                         icon: Icon(Icons.more_vert),
                         itemBuilder:(context)=>[
-                          PopupMenuItem(
-                            value: 1,
-                            child: ListTile(
-                              leading: Icon(Icons.edit),
-                              title: Text("Edit"),
-                            )),
+                     
                           PopupMenuItem(
                             value: 2,
                             child: ListTile(
@@ -213,7 +208,10 @@ class _PostScreenState extends State<PostScreen> {
             ),
             actions: [
               TextButton(onPressed: (){
-                
+                Navigator.pop(context);
+              }, child: Text("Cancel")),
+              TextButton(onPressed: (){
+                Navigator.pop(context);
               }, child: Text("Update")),
             ],
           );
