@@ -197,6 +197,7 @@ class _PostScreenState extends State<PostScreen> {
             title: Text("Update"),
             content: Container(
               child: TextField(
+                maxLines: 2,
                 controller: editController,
                 decoration: InputDecoration(
                   hintText: "Update your post",
