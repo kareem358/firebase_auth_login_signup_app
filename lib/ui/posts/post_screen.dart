@@ -19,7 +19,7 @@ class _PostScreenState extends State<PostScreen> {
   final auth =FirebaseAuth.instance;
   final ref=FirebaseDatabase.instance.ref('Post');
   final searchFilter= TextEditingController();
-  final editFilter= TextEditingController();
+  final editController= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,13 +201,21 @@ class _PostScreenState extends State<PostScreen> {
             title: Text("Update"),
             content: Container(
               child: TextField(
-                controller: editFilter,
+                controller: editController,
                 decoration: InputDecoration(
                   hintText: "Update your post",
+                  border: OutlineInputBorder(
+
+
+                  )
                 ),
               ),
             ),
-            actions: [],
+            actions: [
+              TextButton(onPressed: (){
+                
+              }, child: Text("Update")),
+            ],
           );
       },
 
