@@ -17,8 +17,8 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   final auth =FirebaseAuth.instance;
-  final ref=FirebaseDatabase.instance.ref('Post');
-  final searchFilter= TextEditingController();
+  //final ref=FirebaseDatabase.instance.ref('Post');
+  //final searchFilter= TextEditingController();
   final editController= TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,8 @@ class _PostScreenState extends State<PostScreen> {
 
         children: [
           SizedBox(height: 10,),
-          Padding(
+       /*   Padding(
+       //this code is written for the search filter so  I commented it for now
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: TextFormField(
               controller: searchFilter,
@@ -88,7 +89,7 @@ class _PostScreenState extends State<PostScreen> {
                 });
               },
             ),
-          ),
+          ),*/
           // fetching firebase data using stream builder
           /*Expanded(
               child: StreamBuilder(
