@@ -72,7 +72,24 @@ class _PostScreenState extends State<PostScreen> {
 
         children: [
           SizedBox(height: 10,),
+       /*   Padding(
+       //this code is written for the search filter so  I commented it for now
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: TextFormField(
+              controller: searchFilter,
+              decoration: InputDecoration(
+                hintText: "search",
+                border: OutlineInputBorder(
 
+                ),
+              ),
+              onChanged: (String value){
+                setState(() {
+
+                });
+              },
+            ),
+          ),*/
           // fetching firebase data using stream builder
           /*Expanded(
               child: StreamBuilder(
